@@ -1,7 +1,17 @@
 export class Turma {
     constructor(
-        public id: number | undefined = undefined,
-        public nome: string,
-        public modulo: string
+        private nome: string,
+        private modulo: string,
+        private id?: number,
     ) { }
+
+    public getId() {
+        return this.id
+    }
+    public getNome() {
+        return this.nome
+    }
+    public getModulo() {
+        return this.modulo
+    }
 }
