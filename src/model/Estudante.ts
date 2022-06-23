@@ -1,12 +1,26 @@
-import { Hobby } from "./Hobby";
 import { Usuario } from "./Usuario";
 
+type Hobby = {
+    id?: number,
+    nome: string
+}
 
-
-export class Estudante extends Usuario implements Hobby{
-    constructor( public id: number | undefined = undefined, nome:string, email: string, data_nasc: string, turma_id: number, public hobby:Hobby[])
+export class Estudante extends Usuario {
+    constructor(
+        nome: string,
+        email: string,
+        data_nasc: string,
+        turma_id: number,
+        private hobby: Hobby[],
+        id?: number
+    )
     {
-        super(id, nome, email, data_nasc, turma_id)
-        
+        super(nome, email, data_nasc, turma_id, id)
+    }
+
+    public getHobby(): Hobby[] {
+        return this.hobby
     }
 }
+
+

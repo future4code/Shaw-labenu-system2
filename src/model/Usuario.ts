@@ -1,13 +1,26 @@
 export class Usuario {
     constructor(
-        public id: number | undefined = undefined,
-        public nome: string,
-        public email: string,
-        public data_nasc: string,
-        public turma_id: number
-    ){
-        
-        console.log("Construindo um Usuário");
-        
+        private nome: string,
+        private email: string,
+        private data_nasc: string,
+        private turma_id: number,
+        private id?: number
+    ) { }
+
+    public getNome() {
+        return this.nome
     }
+    public getEmail() {
+        return this.email
+    }
+    public getData_Nasc() {
+        return this.data_nasc
+    }
+    public getTurma_id() {
+        return this.turma_id
+    }
+    public getId() {
+        return this.id
+    }
+
 }

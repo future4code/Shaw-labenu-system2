@@ -1,15 +1,22 @@
-import { Especialidade } from "./Especialidade";
 import { Usuario } from "./Usuario";
 
+type Especialidade = {
+    nome:"JS" | "CSS" | "React" | "Typescript" | "POO"
+}
 export class Docente extends Usuario {
     constructor(
-        public id: number | undefined = undefined,
-        public nome: string,
-        public email: string,
-        public data_nasc: string,
-        public turma_id: number,
-        public especialidade: Especialidade[],
+         nome: string,
+         email: string,
+         data_nasc: string,
+         turma_id: number,
+        private especialidade: Especialidade[],
+         id?: number
     ){
-        super(id, nome, email, data_nasc, turma_id)
+        super(nome, email, data_nasc, turma_id, id)
+    }
+
+    public getEspecialidade(): Especialidade[]{
+        return this.especialidade
     }
 }
+
