@@ -1,6 +1,7 @@
 import { Usuario } from "./Usuario";
 
 type Especialidade = {
+    id?: number,
     nome:"JS" | "CSS" | "React" | "Typescript" | "POO"
 }
 export class Docente extends Usuario {
@@ -10,7 +11,7 @@ export class Docente extends Usuario {
          data_nasc: string,
          turma_id: number,
         private especialidade: Especialidade[],
-         id?: number
+         id?: number,
     ){
         super(nome, email, data_nasc, turma_id, id)
     }
