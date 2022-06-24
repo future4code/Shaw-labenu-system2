@@ -5,8 +5,16 @@ import { Docente } from "../model/Docente"
 export const createDocente = async (req: Request, res: Response): Promise<void> =>{
     try{
         const {nome, email, data_nasc, turma_id, especialidade} = req.body        
+        const id = Number(Math.floor(Date.now() * Math.random()))
+        console.log(id)
 
-        const docente:Docente = new Docente(nome, email, data_nasc, turma_id, especialidade)
+        const conversorData = (date: string): string => {
+            const arrData = date.split("/")
+            return `${arrData[2]}-${arrData[1]}-${arrData[0]}`
+        }
+        const dataSQL = conversorData(data_nasc)
+
+        const docente:Docente = new Docente(id, nome, email, dataSQL, turma_id, especialidade)
 
         const docenteDB = new DocenteDataBase()
 

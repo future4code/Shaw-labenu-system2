@@ -7,15 +7,15 @@ type Hobby = {
 
 export class Estudante extends Usuario {
     constructor(
+        id: number,
         nome: string,
         email: string,
         data_nasc: string,
         turma_id: number,
         private hobby: Hobby[],
-        id?: number
     )
     {
-        super(nome, email, data_nasc, turma_id, id)
+        super(id, nome, email, data_nasc, turma_id)
     }
 
     public getHobby(): Hobby[] {
