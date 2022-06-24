@@ -1,12 +1,15 @@
 export class Usuario {
     constructor(
+        private id: number,
         private nome: string,
         private email: string,
         private data_nasc: string,
-        private turma_id: number,
-        private id?: number
+        private turma_id: number
     ) { }
 
+    public getId() {
+        return this.id
+    }
     public getNome() {
         return this.nome
     }
@@ -19,8 +22,4 @@ export class Usuario {
     public getTurma_id() {
         return this.turma_id
     }
-    public getId() {
-        return this.id
-    }
-
 }
