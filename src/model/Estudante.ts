@@ -1,7 +1,7 @@
 import { Usuario } from "./Usuario";
 
 type Hobby = {
-    id?: number,
+    id: number,
     nome: string
 }
 
@@ -12,7 +12,7 @@ export class Estudante extends Usuario {
         data_nasc: string,
         turma_id: number,
         private hobby: Hobby[],
-        id?: number
+        id: number
     )
     {
         super(nome, email, data_nasc, turma_id, id)
