@@ -1,7 +1,7 @@
 import { Usuario } from "./Usuario";
 
 type Hobby = {
-    id?: number,
+    id: number,
     nome: string
 }
 
