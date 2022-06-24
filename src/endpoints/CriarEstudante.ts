@@ -5,14 +5,20 @@ import { Estudante } from "../model/Estudante";
 export const createEstudante = async (req: Request,res: Response): Promise<void> => {
   try {
     const { nome, email, nascimento, turma_id, hobby } = req.body;
+    const id = Number(Math.floor(Date.now() * Math.random()));
 
-    const convertDate = (date: string): string => {
-      const arrDate = date.split("/");
-      return `${arrDate[2]}-${arrDate[1]}-${arrDate[0]}`;
+    if(!nome || !email|| !nascimento || !turma_id){
+      throw new Error("Dados faltantes")
+    }
+
+    const conversorData = (date: string): string => {
+      const arrData = date.split("/");
+      return `${arrData[2]}-${arrData[1]}-${arrData[0]}`;
     };
-    const dateIng = convertDate(nascimento);
 
-    const estudante = new Estudante(nome, email, dateIng, turma_id, hobby);
+    const dateSQL = conversorData(nascimento);
+
+    const estudante = new Estudante(nome, email, dateSQL, turma_id, hobby, id);
 
     const turmaDB = new EstudanteDataBase();
 
