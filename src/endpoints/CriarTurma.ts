@@ -14,8 +14,8 @@ export const createTurma = async (req: Request, res: Response): Promise<void> =>
 
         res.status(201).send("Turma criada com sucesso!!!")
 
-    }catch(error){
-        res.status(500).end()
+    }catch(error:any){
+        res.status(500).send(error.sqlMessage || error.message)
     }
 }
 
