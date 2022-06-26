@@ -40,7 +40,7 @@ export class EstudanteDataBase extends BaseDatabase {
     }
   }
 
-  public async pegarEstudante() {
+  public async buscarEstudante(nome: string) {
     try {
       const result = await BaseDatabase.connection("Estudante")
         .join(
@@ -59,7 +59,9 @@ export class EstudanteDataBase extends BaseDatabase {
           "Estudante.data_nasc",
           "Estudante.turma_id",
           "Hobby.nome as hobby"
-        );
+        )
+        .where("Estudante.nome", "LIKE", nome)
+        ;
       return result;
 
     } catch (error: any) {

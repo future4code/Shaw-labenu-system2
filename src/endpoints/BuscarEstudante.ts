@@ -1,11 +1,13 @@
 import { Request, Response } from "express"
 import { EstudanteDataBase } from "../data/EstudanteDataBase"
 
-export const pegarEstudante = async (req: Request,res: Response): Promise<void> => {
+export const buscarEstudante = async (req: Request,res: Response): Promise<void> => {
   try {
+    const nomeEstudante = req.query.nome as string
+
     const resultDB = new EstudanteDataBase();
 
-    const result = await resultDB.pegarEstudante();
+    const result = await resultDB.buscarEstudante(nomeEstudante);
 
     const resultado = result.map((inf) => {
       const data = inf.data_nasc;
