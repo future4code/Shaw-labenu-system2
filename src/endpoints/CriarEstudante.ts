@@ -8,7 +8,7 @@ export const createEstudante = async (req: Request,res: Response): Promise<void>
     const id = Number(Math.floor(Date.now() * Math.random()));
 
     if(!nome || !email|| !nascimento || !turma_id){
-      throw new Error("Dados faltantes")
+      throw new Error("Algum dado está incorreto, favor verificar")
     }
 
     const conversorData = (date: string): string => {
