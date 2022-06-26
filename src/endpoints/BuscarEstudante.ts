@@ -24,7 +24,7 @@ export const buscarEstudante = async (req: Request,res: Response): Promise<void>
         email: inf.email,
         data_nasc: dataConvertida,
         turma_id: inf.turma_id,
-        especialidade: inf.hobby,
+        hobby: inf.hobby,
       };
     });
 
