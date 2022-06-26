@@ -4,7 +4,11 @@ import { Turma } from "../model/Turma"
 
 export const createTurma = async (req: Request, res: Response): Promise<void> =>{
     try{
-        const {nome, modulo} = req.body        
+        const {nome, modulo} = req.body    
+        
+        if(!nome || !modulo ){
+            throw new Error("Algum dado está incorreto ou faltando, favor verificar")
+        }
 
         const turma = new Turma(nome, modulo)
 

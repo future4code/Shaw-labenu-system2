@@ -9,6 +9,10 @@ export const buscarEstudante = async (req: Request,res: Response): Promise<void>
 
     const result = await resultDB.buscarEstudante(nomeEstudante);
 
+    if(result.length === 0){
+      throw new Error("Estudante não localizado, favor verificar")
+    }
+
     const resultado = result.map((inf) => {
       const data = inf.data_nasc;
       const dataString = data.toISOString();

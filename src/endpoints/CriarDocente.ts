@@ -6,7 +6,11 @@ export const createDocente = async (req: Request, res: Response): Promise<void> 
     try{
         const {nome, email, data_nasc, turma_id, especialidade} = req.body        
         const id = Number(Math.floor(Date.now() * Math.random()))
-        console.log(id)
+        // console.log(id)
+
+        if(!nome || !email|| !data_nasc || !turma_id || !especialidade){
+            throw new Error("Algum dado está incorreto ou faltando, favor verificar")
+          }
 
         const conversorData = (date: string): string => {
             const arrData = date.split("/")
@@ -23,6 +27,6 @@ export const createDocente = async (req: Request, res: Response): Promise<void> 
         res.status(201).send("Docente cadastrado(a) com sucesso!!!")
 
     }catch(error:any){
-        throw new Error(error.sqlMessage || error.message)
+        res.status(500).send(error.sqlMessage || error.message)
     }
 }
