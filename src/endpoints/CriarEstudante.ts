@@ -8,7 +8,7 @@ export const createEstudante = async (req: Request,res: Response): Promise<void>
     const id = Number(Math.floor(Date.now() * Math.random()));
 
     if(!nome || !email|| !nascimento || !turma_id){
-      throw new Error("Algum dado está incorreto, favor verificar")
+      throw new Error("Algum dado está incorreto ou faltando, favor verificar")
     }
 
     const conversorData = (date: string): string => {
@@ -18,7 +18,7 @@ export const createEstudante = async (req: Request,res: Response): Promise<void>
 
     const dateSQL = conversorData(nascimento);
 
-    const estudante = new Estudante(nome, email, dateSQL, turma_id, hobby, id);
+    const estudante = new Estudante(id, nome, email, dateSQL, turma_id, hobby);
 
     const turmaDB = new EstudanteDataBase();
 

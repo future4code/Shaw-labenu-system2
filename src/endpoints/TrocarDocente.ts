@@ -6,6 +6,10 @@ export const trocaDocente = async (req: Request, res: Response): Promise<void> =
         const id_docente = Number(req.query.id_docente)
         const id_turma = Number(req.query.id_turma)  
 
+        if(!id_turma || !id_docente){
+            throw new Error("Turma ausente ou invalida, favor verificar")
+          }
+
         const docenteDB = new DocenteDataBase()
 
         await docenteDB.mudarDocenteTurma(id_docente,id_turma)
@@ -13,6 +17,6 @@ export const trocaDocente = async (req: Request, res: Response): Promise<void> =
         res.status(201).send(`Docente agora esta na turma ${id_turma} !`)
 
     }catch(error:any){
-        throw new Error(error.sqlMessage || error.message)
+        res.status(500).send(error.sqlMessage || error.message)
     }
 }

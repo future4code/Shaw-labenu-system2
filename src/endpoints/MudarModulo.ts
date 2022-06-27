@@ -5,6 +5,10 @@ export const mudarModulo = async (req: Request, res:Response):Promise <void> =>{
     try{
 
         const {modulo} = req.body
+
+        if(!modulo || modulo > 6 || modulo != Number){
+            throw new Error("Modulo ausente ou invalido, favor verificar")
+        }
         
         const turmaDB = new TurmaDataBase()
         
